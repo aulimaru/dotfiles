@@ -1,0 +1,10 @@
+font=monospace 10
+background-color=#1A1B26CC
+text-color=#C0CAF5FF
+width=300
+height=100
+border-size=2
+border-color=#7AA2F7FF
+progress-color=source #7DCFFFFF
+actions=0
+default-timeout=10000
