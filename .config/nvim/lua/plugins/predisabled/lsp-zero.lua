@@ -11,33 +11,6 @@ return {
         end,
     },
 
-    -- Autocompletion
-    {
-        "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
-        dependencies = {
-            "L3MON4D3/LuaSnip",
-        },
-        config = function()
-            -- Here is where you configure the autocompletion settings.
-            -- The arguments for .extend() have the same shape as `manage_nvim_cmp`: 
-            -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/api-reference.md#manage_nvim_cmp
-
-            require("lsp-zero.cmp").extend()
-
-            -- And you can configure cmp even more, if you want to.
-            local cmp = require("cmp")
-            local cmp_action = require("lsp-zero.cmp").action()
-
-            cmp.setup({
-                mapping = {
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<Tab>"] = cmp_action.tab_complete(),
-                },
-            })
-        end,
-    },
-
     -- LSP
     {
         "neovim/nvim-lspconfig",
@@ -59,12 +32,10 @@ return {
             local lsp = require("lsp-zero")
 
             lsp.on_attach(function(_client, bufnr)
-                lsp.default_keymaps({buffer = bufnr})
+                lsp.default_keymaps({ buffer = bufnr })
             end)
 
             lsp.setup()
         end,
     },
 }
-
-
