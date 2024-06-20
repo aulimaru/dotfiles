@@ -6,3 +6,5 @@ vim.opt.shiftwidth = 4
 vim.opt.scrolloff = 5
 
 -- vim.opt.colorcolumn = "80"
+
+vim.g.autoformat = false
