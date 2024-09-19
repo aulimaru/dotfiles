@@ -15,7 +15,6 @@
 
         "position": "top",
 
-        // If height property would be not present, it'd be calculated dynamically
         "height": 30,
         "spacing": 26,
 
@@ -44,6 +43,7 @@
 
         "hyprland/window": {
             "max-length": 200,
+            "separate-outputs": true
         },
 
         "battery": {
@@ -171,7 +171,7 @@
             "exec-if": "which sway-audio-idle-inhibit",
             "return-type": "json",
             "format-icons": {
-                "output": "",
+                "output": " ",
                 "input": "",
                 "output-input": "  ",
                 "none": ""
