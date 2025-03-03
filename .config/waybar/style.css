@@ -1,0 +1,186 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-white {
+    to {
+        color: rgba(190,200,209 , 0.9);
+    }
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+}
+
+/* The whole bar */
+#waybar {
+    background: rgba(26, 27, 38, 0.65);
+    color: rgba(217, 216, 216, 0.9);
+    transition-property: background-color;
+    transition-duration: .5s;
+    font-family: "SF Pro Display", Cantarell,  Noto Sans, sans-serif;
+    font-size: 14px;
+}
+
+#window {
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+window#waybar.empty {
+    background: rgba(26, 27, 38, 0.35);
+}
+
+window#waybar.solo {
+    background: rgba(26, 27, 38, 0.65);
+}
+
+#workspaces {
+    margin: 0 5px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #565f89;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    min-width: 18px;
+}
+
+#workspaces button:hover {
+    color: #bb9af7;
+    background-color: rgba(187, 154, 247,0.2);
+    border-top: 3px solid #bb9af7;
+    border-bottom: 3px solid #bb9af7;
+}
+
+#workspaces button.active {
+    color: #7aa2f7;
+    background-color: rgba(122,164,247,0.2);
+    border-top: 3px solid #7aa2f7;
+    border-bottom: 3px solid #7aa2f7;
+}
+
+#workspaces button.urgent {
+    background-color: #a96d1f;
+    color: white;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging, #battery.plugged {
+    color: green;
+}
+
+#battery.warning {
+    color: yellow;
+}
+
+#battery.critical {
+    color: red;
+}
+
+#battery.warning.discharging {
+    color: orange;
+}
+
+#battery.critical.discharging {
+    color: red;
+    animation-name: blink-white;
+    animation-duration: .5s;
+}
+
+
+#clock {
+    font-weight: bold;
+}
+
+#cpu {
+}
+
+#cpu.warning {
+    color: orange;
+}
+
+#cpu.critical {
+    color: red;
+    animation-name: blink-white;
+    animation-duration: .5s;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#memory.warning {
+    color: orange;
+}
+
+#memory.critical {
+    color: red;
+    animation-name: blink-white;
+    animation-duration: .5s;
+}
+
+#network {
+}
+
+#network.disconnected {
+    color: gray;
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+    color: grey;
+}
+
+#temperature.critical {
+    color: red;
+}
+
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+}

@@ -1,0 +1,20 @@
+[Default Applications]
+image/png=feh.desktop
+image/jpg=feh.desktop
+image/pjpeg=feh.desktop
+image/tiff=feh.desktop
+image/jpeg=feh.desktop
+image/gif=feh.desktop
+image/bmp=feh.desktop
+image/webp=feh.desktop
+image/heic=feh.desktop
+application/pdf=librewolf.desktop
+text/html=librewolf.desktop
+x-scheme-handler/http=librewolf.desktop
+x-scheme-handler/https=librewolf.desktop
+x-scheme-handler/about=librewolf.desktop
+x-scheme-handler/unknown=librewolf.desktop
+
+[Added Associations]
+text/x-log=emacsclient.desktop;
+text/javascript=emacsclient.desktop;
