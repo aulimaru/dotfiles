@@ -25,20 +25,19 @@ plugin {
 
     # if a tab group will automatically be created for the first window spawned in a workspace
     tab_first_window = false
-
     # tab group settings
     tabs {
       # height of the tab bar
-      height = 16 # default: 22
+      height = 15 # default: 15
 
       # padding between the tab bar and its focused node
-      padding = 4 # default: 6
+      padding = 5 # default: 5
 
       # the tab bar should animate in/out from the top instead of below the window
       from_top = false # default: false
 
       # radius of tab bar corners
-      radius = 1 # default: 6
+      radius = 0 # default: 6
 
       # tab bar border width
       border_width = 2 # default: 2
@@ -47,41 +46,36 @@ plugin {
       render_text = true # default: true
 
       # center the window title
-      text_center = true # default: true
+      text_center = false # default: false
 
       # font to render the window title with
       text_font = Sans # default: Sans
 
       # height of the window title
-      text_height = 8 # default: 8
+      text_height = 9 # default: 8
 
       # left padding of the window title
-      text_padding = 3 # default: 3
+      text_padding = 8 # default: 3
 
       # active tab bar segment colors
-      col.active = rgba(7aa2f740) # default: rgba(33ccff40)
-      col.active.border = rgba(7aa2f7ee) # default: rgba(33ccffee)
-      col.active.text = rgba(ffffffee) # default: rgba(ffffffff)
+      col.active = rgba(7a82f760) # default: rgba(50a0e0ff)
+      col.active.border = rgba(7a92f7ff) # default: rgba(70b0c0ff)
+      col.active.text = rgba(ffffffff) # default: rgba(ffffffff)
 
       # focused tab bar segment colors (focused node in unfocused container)
       col.focused = rgba(60606040) # default: rgba(60606040)
       col.focused.border = rgba(808080ee) # default: rgba(808080ee)
-      col.focused.text = rgba(ffffffee) # default: rgba(ffffffff)
+      col.focused.text = rgba(ffffffff) # default: rgba(ffffffff)
 
       # inactive tab bar segment colors
-      col.inactive = rgba(30303020) # default: rgba(30303020)
-      col.inactive.border = rgba(606060aa) # default: rgba(606060aa)
-      col.inactive.text = rgba(ffffffee) # default: rgba(ffffffff)
+      col.inactive = rgba(30303050) # default: rgba(30303050)
+      col.inactive.border = rgba(50505090) # default: rgba(50505090)
+      col.inactive.text = rgba(ffffffff) # default: rgba(ffffffff)
 
       # urgent tab bar segment colors
-      col.urgent = rgba(ff223340) # default: rgba(ff223340)
-      col.urgent.border = rgba(ff2233ee) # default: rgba(ff2233ee)
-      col.urgent.text = rgba(ffffffee) # default: rgba(ffffffff)
-
-      # urgent tab bar segment colors
-      col.locked = rgba(90903340) # default: rgba(90903340)
-      col.locked.border = rgba(909033ee) # default: rgba(909033ee)
-      col.locked.text = rgba(ffffffee) # default: rgba(ffffffff)
+      col.urgent = rgba(ff4f4fff) # default: rgba(ff4f4fff)
+      col.urgent.border = rgba(ff8080ff) # default: rgba(ff8080ff)
+      col.urgent.text = rgba(ffffffff) # default: rgba(ffffffff)
 
       # if tab backgrounds should be blurred
       # Blur is only visible when the above colors are not opaque.
@@ -95,7 +89,7 @@ plugin {
     # autotiling settings
     autotile {
       # enable autotile
-      enable = false # default: false
+      enable = true # default: false
 
       # make autotile-created groups ephemeral
       ephemeral_groups = true # default: true
@@ -103,7 +97,7 @@ plugin {
       # if a window would be squished smaller than this width, a vertical split will be created
       # -1 = never automatically split vertically
       # 0 = always automatically split vertically
-      # <number> = pixel width to split at
+      # <number> = pixel height to split at
       trigger_width = 0 # default: 0
 
       # if a window would be squished smaller than this height, a horizontal split will be created
@@ -120,3 +114,5 @@ plugin {
     }
   }
 }
+
+source=$hy3_config
