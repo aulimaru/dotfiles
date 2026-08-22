@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: Competitive Programming Template C++
+# key: cp
+# --
+#ifdef LOCAL
+#include "dbg.h"
+#else
+#define dbg(...)
+#endif
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    $0
+}

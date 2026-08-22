@@ -1,185 +1,170 @@
-// =============================================================================
-//
-// Waybar configuration
-//
-// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
-//
-// =============================================================================
-
 {
-    // -------------------------------------------------------------------------
-    // Global configuration
-    // -------------------------------------------------------------------------
-
-    "layer": "top",
-
-        "position": "top",
-
-        "height": 30,
-        "spacing": 26,
-
-
-        "modules-left": [
-            "hyprland/workspaces", "clock", "custom/countdown"
-        ],
-        "modules-center": [
-            "hyprland/window"
-        ],
-        "modules-right": [
-            "network",
-            "pulseaudio",
-            "custom/audio_idle_inhibitor",
-            "cpu",
-            "memory",
-            "backlight",
-            "battery",
-            "tray",
-        ],
-
-
-        // -------------------------------------------------------------------------
-        // Modules
-        // -------------------------------------------------------------------------
-
-        "hyprland/window": {
-            "max-length": 200,
-            "separate-outputs": true
-        },
-
-        "battery": {
-            "interval": 3,
-            "states": {
-                "warning": 25,
-                "critical": 10
-            },
-            // Connected to AC
-            "format": "{icon}  {capacity}%", // Icon: bolt
-            "format-charging": "  {capacity}%",
-            "format-plugged": "  {capacity}%",
-            // Not connected to AC
-            // "format-discharging": "{icon} {capacity}%",
-            "format-icons": [
-                " ", // Icon: battery-full
-            " ", // Icon: battery-three-quarters
-            " ", // Icon: battery-half
-            " ", // Icon: battery-quarter
-            " "  // Icon: battery-empty
-            ],
-            "tooltip": false
-        },
-
-        "clock": {
-            "interval": 1,
-            "format": "󰃰 {:%r(d%d})",
-            "format-alt": " {:%Y-%m-%d}",
-            "tooltip-format": "<big>{:%e %B %Y}</big>\n<tt><small>{calendar}</small></tt>"
-        },
-
-        "cpu": {
-            "interval": 5,
-            "format": "  {usage}%", // Icon: microchip
-            "format-alt": "  {usage}% {load}",
-            "states": {
-                "warning": 70,
-                "critical": 90
-            }
-        },
-
-        "memory": {
-            "interval": 5,
-            "format": "︁ {used:0.2f}G/{total:0.2f}G",
-            "format-alt": " {}%", // Icon: memory
-            "states": {
-                "warning": 70,
-                "critical": 90
-            }
-        },
-
-        "network": {
-            "interval": 3,
-            "format-wifi": "  {essid} ({signalStrength}%)",
-            "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-            "format-disconnected": "󰖪  Disconnected",
-            "tooltip-format": "{ifname}: {ipaddr}"
-        },
-
-        "hyprland/workspaces": {
-            "all-outputs": false,
-            "disable-scroll": true,
-            "sort-by-number" : true,
-            "on-click": "activate",
-            // "on-scroll-up": "hyprctl dispatch workspace e+1",
-            // "on-scroll-down": "hyprctl dispatch workspace e-1",
-            "format": "{icon}{name}",
-            "format-icons": {
-                // "": " ", // Icon: code
-                // "": " ", // Icon: terminal
-                // "": " ", // Icon: terminal
-                "urgent": "",
-                "active": "",
-                "default": ""
-            }
-        },
-        "pulseaudio": {
-            "scroll-step": 1, // %, can be a float
-            "format": "{volume}% {icon}  {format_source} ",
-            "format-bluetooth": "{volume}% {icon}  {format_source}",
-            "format-bluetooth-muted": " {icon}  {format_source}",
-            "format-muted": " {format_source}",
-            "format-source": "{volume}% ",
-            "format-source-muted": "",
-            "format-icons": {
-                "headphone": "",
-                "hands-free": "",
-                "headset": "",
-                "phone": "",
-                "portable": "",
-                "car": "",
-                "default": ["", "", ""]
-            },
-            "on-click": "pavucontrol"
-        },
-        "temperature": {
-            "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-            "interval": 5,
-            "critical-threshold": 75,
-            "format": "{icon}  {temperatureC}°C",
-            "format-icons": [
-                "", // Icon: temperature-empty
-            "", // Icon: temperature-quarter
-            "", // Icon: temperature-half
-            "", // Icon: temperature-three-quarters
-            ""  // Icon: temperature-full
-            ],
-            "tooltip": false
-        },
-
-        "backlight": {
-            // "device": "acpi_video1",
-            "format": "{icon} {percent}%",
-            "format-icons": ["", "", "", "", "", "", "", "", ""]
-        },
-
-        "tray": {
-            "icon-size": 16,
-            "spacing": 10
-        },
-
-        "custom/audio_idle_inhibitor": {
-            "format": "{icon}",
-            "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
-            "exec-if": "which sway-audio-idle-inhibit",
-            "return-type": "json",
-            "format-icons": {
-                "output": " ",
-                "input": "",
-                "output-input": "  ",
-                "none": ""
-            }
-        },
-
-        "custom/countdown": {
-            "interval": 2,
-            "exec": "/home/huangqixuan/programming/projects/countdown/target/release/countdown"
-        }
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "modules-left": [
+    "ext/workspaces",
+    "custom/countdown"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "clock",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "temperature",
+    "cpu",
+    "memory",
+    "battery",
+    "tray"
+  ],
+  "hyprland/window": {
+    "max-length": 200,
+    "separate-outputs": true
+  },
+  "battery": {
+    "interval": 3,
+    "states": {
+      "warning": 25,
+      "critical": 10
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-discharging": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip": false
+  },
+  "clock": {
+    "interval": 1,
+    "format": "󰃰 {:%T}",
+    "format-alt": " {:%Y-%m-%d}",
+    "tooltip-format": "<big>{:%e %B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "format-alt": " {usage}% {load}",
+    "states": {
+      "high": 50,
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "memory": {
+    "interval": 5,
+    "format": " {}%",
+    "format-alt": "︁ {used:0.1f}/{total:0.1f}GB",
+    "states": {
+      "high": 50,
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "network": {
+    "interval": 3,
+    "format-wifi": "",
+    "format-ethernet": "{cidr}",
+    "format-disconnected": "󰖪",
+    "tooltip-format": "{essid} ({signalStrength}%) {ifname}: {ipaddr}"
+  },
+  "ext/workspaces": {
+    "all-outputs": false,
+    "sort-by-name": false,
+    "sort-by-id": false,
+    "sort-by-coordinates": true,
+    "ignore-hidden": true,
+    "on-click": "activate",
+    "format": "{icon}{name}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    }
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{volume}% {icon}  {format_source} ",
+    "format-bluetooth": "{volume}% {icon}  {format_source}",
+    "format-bluetooth-muted": " {icon}  {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "interval": 5,
+    "critical-threshold": 75,
+    "format": "{icon}  {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip": false
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} {dynamic}",
+    "player-icons": {
+      "default": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    },
+    "dynamic-order": [
+      "title",
+      "artist"
+    ]
+  },
+  "custom/countdown": {
+    "interval": 2,
+    "format": "{text}",
+    "tooltip": "true",
+    "return-type": "json",
+    "exec": " ~/scripts/countdown.sh",
+    "exec-if": "which countdown"
+  }
 }

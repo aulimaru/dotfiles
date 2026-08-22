@@ -28,6 +28,7 @@ check_hy3() {
 
 check_hy3_and_failback() {
     switch_to_hy3
+    hyprpm reload
     if ! check_hy3; then
         notify-send -i "$hy3_logo" "hy3" "hy3 configuration error detected. Failing back to dwindle configuration."
         switch_to_dwindle

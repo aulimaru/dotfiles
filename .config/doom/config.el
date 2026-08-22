@@ -99,6 +99,8 @@
 (setq-default tab-width 4)          ;; Set tab width to 4
 (setq-default indent-tabs-mode nil) ;; Use spaces instead of tabs
 
+(setq yas-snippet-dirs '("~/.config/doom/snippets"))
+
 ;; org modern
 (with-eval-after-load 'org (global-org-modern-mode))
 
@@ -114,14 +116,14 @@
 ;; (after! org
 ;;   (setq org-startup-with-latex-preview t))
 
-;(use-package! org-mind-map
-;  :init
-;  (require 'ox-org)
-;  :ensure t
-;  ;; Uncomment the below if 'ensure-system-packages` is installed
-;  ;;:ensure-system-package (gvgen . graphviz)
-;  :config
-;  (setq org-mind-map-engine "dot"))       ; Default. Directed Graph
+                                        ;(use-package! org-mind-map
+                                        ;  :init
+                                        ;  (require 'ox-org)
+                                        ;  :ensure t
+                                        ;  ;; Uncomment the below if 'ensure-system-packages` is installed
+                                        ;  ;;:ensure-system-package (gvgen . graphviz)
+                                        ;  :config
+                                        ;  (setq org-mind-map-engine "dot"))       ; Default. Directed Graph
 ;;; (setq org-mind-map-engine "neato")  ; Undirected Spring Graph
 ;;; (setq org-mind-map-engine "twopi")  ; Radial Layout
 ;;; (setq org-mind-map-engine "fdp")    ; Undirected Spring Force-Directed
@@ -143,7 +145,7 @@
 ;; Github Copilot
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
-  :hook (prog-mode . copilot-mode)
+  ;; :hook (prog-mode . copilot-mode)  ; auto-enable disabled
   :bind (:map copilot-completion-map
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)
@@ -151,13 +153,41 @@
               ("<tab>" . 'copilot-accept-completion)
               ("C-n" . 'copilot-next-completion)
               ("C-p" . 'copilot-previous-completion)))
-;; mlog-mode
-;(use-package! mlog-mode)
+;; mlog-mode sb yiheng
+;; (use-package! mlog-mode)
 
 ;; xclip
-(use-package! xclip
+;; (use-package! xclip
+;;   :config
+;;   (setq xclip-program "wl-copy")
+;;   (setq xclip-select-enable-clipboard t)
+;;   (setq xclip-mode t)
+;;   (setq xclip-method (quote wl-copy)))
+
+;; org habit
+(add-to-list `org-modules 'org-habit)
+
+;; clipboard fix
+;; credit: yorickvP on Github
+(setq wl-copy-process nil)
+(defun wl-copy (text)
+  (setq wl-copy-process (make-process :name "wl-copy"
+                                      :buffer nil
+                                      :command '("wl-copy" "-f" "-n")
+                                      :connection-type 'pipe
+                                      :noquery t))
+  (process-send-string wl-copy-process text)
+  (process-send-eof wl-copy-process))
+(defun wl-paste ()
+  (if (and wl-copy-process (process-live-p wl-copy-process))
+      nil ; should return nil if we're the current paste owner
+    (shell-command-to-string "wl-paste -n | tr -d \r")))
+(setq interprogram-cut-function 'wl-copy)
+(setq interprogram-paste-function 'wl-paste)
+(setq-hook! '(c-ts-mode-hook c++-ts-mode-hook c-or-c++-ts-mode-hook)
+  c-ts-mode-indent-offset 4)
+
+(use-package! claude-code-ide
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
   :config
-  (setq xclip-program "wl-copy")
-  (setq xclip-select-enable-clipboard t)
-  (setq xclip-mode t)
-  (setq xclip-method (quote wl-copy)))
+  (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools

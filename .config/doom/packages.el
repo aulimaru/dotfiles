@@ -17,6 +17,8 @@
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 (package! valign)
+(package! claude-code-ide
+  :recipe (:host github :repo "manzaltu/claude-code-ide.el"))
 ;; (package! mlog-mode
 ;;   :recipe (:host github :repo "hey2022/mlog-mode"))
 ;; To install a package directly from a remote git repo, you must specify a
